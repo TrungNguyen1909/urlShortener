@@ -67,7 +67,7 @@ func main() {
 	http.HandleFunc("/",handler)
 	http.HandleFunc("/*",handler)
 	http.HandleFunc("/api", apiHandler)
-	port, ok = os.LookupEnv("PORT")
+	port, ok := os.LookupEnv("PORT")
 	if !ok{
 	port = "8890"
 	}
