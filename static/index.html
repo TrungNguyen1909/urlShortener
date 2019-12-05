@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>URL Shortener</title>
+		<script>
+			function submit(){
+				url = document.getElementById("input-url").value.trim()
+				req = fetch('/api',{method:"POST",body:url}).then(r=>r.text()).then(url =>{
+					console.log(url)
+					var p = document.createElement('div')
+					var node = document.createElement('a')
+					node.href = '/'+url
+					node.textContent = window.location.origin+'/'+url
+					p.appendChild(node)
+					document.body.appendChild(p)
+				})
+			}
+		</script>
+	</head>
+	<body>
+		<input class="input" id="input-url">
+		<button onclick="submit()">Shorten!</button>
+	</body>
+</html>
